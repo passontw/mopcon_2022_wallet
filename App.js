@@ -1,5 +1,5 @@
-import HomeScreen from "./src/screens/HomeScreen";
+import SendETHScreen from "./src/screens/SendETHScreen";
 
 export default function App() {
-  return <HomeScreen />;
+  return <SendETHScreen />;
 }
