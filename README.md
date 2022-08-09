@@ -2,6 +2,12 @@
 
 ## Tags list
 
+**list tags**
+
+```
+    $ yarn list:tags
+```
+
 ### Wallet
 
 * 1.0 - 初始化 Expo Managed workflow

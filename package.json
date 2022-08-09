@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "list:tags": "git tag -l -n9",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
