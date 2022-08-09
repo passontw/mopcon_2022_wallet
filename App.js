@@ -1,5 +1,5 @@
-import SendETHScreen from "./src/screens/SendETHScreen";
+import QRCodeScreen from "./src/screens/QRCodeScreen";
 
 export default function App() {
-  return <SendETHScreen />;
+  return <QRCodeScreen />;
 }
