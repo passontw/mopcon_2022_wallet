@@ -9,7 +9,7 @@ export default function App() {
         <Text style={count < 5 ? styles.less : styles.greater}>You clicked {count} times</Text>
       </View>
       <View style={{ height: 100 }}>
-        <TouchableOpacity style={styles.button} onPress={() => false}>
+        <TouchableOpacity style={styles.button} onPress={() => setCount(count+1)}>
           <Text style={styles.buttonText}>Click</Text>
         </TouchableOpacity>
       </View>
