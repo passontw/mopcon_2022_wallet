@@ -2,6 +2,8 @@
 
 ## Tags list
 
+### Wallet
+
 * 1.0 - 初始化 Expo Managed workflow
 * 1.1 - 新增歡迎首頁的 UI
 * 1.2 - 新增顯示錢包餘額的 UI
@@ -12,6 +14,12 @@
 * 1.7 - 建立一筆交易 發送乙太幣
 * 1.8 - 顯示錢包地址的 QRCode 頁面
 
+---
+
+### Counter
+
+* 2.1 - Counter 的 UI
+* 2.2 - 增加 setCount function
 ## checkout branch to tag
 
 ```
