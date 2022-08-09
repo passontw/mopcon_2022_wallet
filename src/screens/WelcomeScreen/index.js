@@ -43,6 +43,13 @@ const restoreWallet = async (privateKey) => {
   storeData(account);    
 };
 
+
+const handleBarCodeScanned = (navigation) => ({ data }) => {
+  restoreWallet(data);
+  console.log("🚀 ~ file: index.js ~ line 49 ~ handleBarCodeScanned ~ data", data)
+  navigation.replace("Home");
+};
+
 const WelcomScreen = (props) => {
   const [scanned, setScanned] = useState(false);
   const { navigation } = props;
@@ -65,7 +72,9 @@ const WelcomScreen = (props) => {
         </Appbar.Header>
         <BarCodeScanner
           style={{flex: 1}}
-          onBarCodeScanned={() => setScanned(false)}
+          onBarCodeScanned={
+            !scanned ? undefined : handleBarCodeScanned(navigation)
+          }
         />
       </Modal>
       <View style={{ margin: 10 }}>

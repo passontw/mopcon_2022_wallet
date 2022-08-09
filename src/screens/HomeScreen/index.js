@@ -59,6 +59,7 @@ const HomeScreen = (props) => {
 
   const handleBarCodeScanned = ({ data }) => {
     setScanned(false);
+    navigation.push("SendETH", { reciverAddress: data });
   };
 
   useEffect(() => {
