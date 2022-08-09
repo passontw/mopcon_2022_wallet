@@ -3,8 +3,9 @@ import { StyleSheet, View, Modal } from "react-native";
 import { Button, Appbar } from "react-native-paper";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-const WelcomScreen = () => {
+const WelcomScreen = (props) => {
   const [scanned, setScanned] = useState(false);
+  const { navigation } = props;
 
   return (
     <View style={styles.container}>
@@ -19,7 +20,9 @@ const WelcomScreen = () => {
         />
       </Modal>
       <View style={{ margin: 10 }}>
-        <Button icon="send" mode="outlined" onPress={() => false}>
+        <Button icon="send" mode="outlined" onPress={() => {
+          navigation.replace('Home');
+        }}>
           Create Wallet
         </Button>
       </View>

@@ -7,3 +7,4 @@
 * 1.2 - 新增顯示錢包餘額的 UI
 * 1.3 - 建立發送 ETH 頁面 UI
 * 1.4 - 顯示地址的 QRCode 頁面 UI
+* 1.5 - 增加 react-navigation 與導頁

@@ -7,11 +7,11 @@ import {
   ActivityIndicator,
   Modal,
 } from "react-native";
-import { Button, Card, List } from "react-native-paper";
+import { Button, Card, List, Appbar } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
   const [scanned, setScanned] = useState(false);
   const [state, setState] = useState({
     address: "",
@@ -20,6 +20,8 @@ const HomeScreen = () => {
     account: null,
     ETHBalance: null,
   });
+
+  const { navigation } = props;
 
   const checkWallet = async () => {
     console.log("check Wallet status");
@@ -58,12 +60,16 @@ const HomeScreen = () => {
         <Card.Actions>
           <View style={styles.rowStyle}>
             <View style={styles.columnStyle}>
-              <Button icon="send" mode="outlined" onPress={() => false}>
+              <Button icon="send" mode="outlined" onPress={() => {
+                navigation.navigate('SendETH');
+              }}>
                 Send
               </Button>
             </View>
             <View style={styles.columnStyle}>
-              <Button icon="qrcode" mode="contained" onPress={() => false}>
+              <Button icon="qrcode" mode="contained" onPress={() => {
+                navigation.navigate('Qrcode');
+              }}>
                 Receive
               </Button>
             </View>
@@ -80,9 +86,13 @@ const HomeScreen = () => {
         </Card.Actions>
       </Card>
       <Modal visible={scanned}>
+      <Appbar.Header>
+          <Appbar.BackAction onPress={() => setScanned(false)} />
+          <Appbar.Content title="Title" />
+        </Appbar.Header>
         <BarCodeScanner
+          style={{flex: 1}}
           onBarCodeScanned={!scanned ? undefined : handleBarCodeScanned}
-          style={StyleSheet.absoluteFillObject}
         />
       </Modal>
 
