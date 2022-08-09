@@ -1,21 +1,37 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, View, Text, ActivityIndicator, SafeAreaView } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 
 const QRCodeScreen = () => {
   const [state, setState] = useState({
     isLoading: true,
-    address: "test",
+    address: "",
   });
 
   const checkWallet = async () => {
-    console.log("檢查錢包狀態");
+    const accountStr = await AsyncStorage.getItem('account');
+    if (accountStr) {
+      const account = JSON.parse(accountStr);
+      setState({
+        isLoading: false,
+        address: account.address,
+      });
+    }
   };
 
   useEffect(() => {
     checkWallet();
   }, []);
+
+
+  if (state.isLoading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.containerStyle}>
