@@ -1,3 +1,4 @@
+import "./global";
 import { useState, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import HomeScreen from "./src/screens/HomeScreen";
