@@ -11,3 +11,9 @@
 * 1.6 - 增加 web3 並且取回餘額
 * 1.7 - 建立一筆交易 發送乙太幣
 * 1.8 - 顯示錢包地址的 QRCode 頁面
+
+## checkout branch to tag
+
+```
+    $ git checkout tags/{tag} -b {branch_name}
+```
