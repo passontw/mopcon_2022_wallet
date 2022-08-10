@@ -25,7 +25,13 @@
 ### Counter
 
 * 2.1 - Counter 的 UI
+* 2.1.1 - Counter 的 UI (class Component)
+* 2.1.2 - class component 增加倒數功能
 * 2.2 - 增加 setCount function
+* 2.3 - 拆出 Couter 的 Class Component
+* 2.3.1 - function component 倒數計時(錯誤範例)
+* 2.3.2 - 修正setCount 在 setInterval 錯誤的問題
+
 ## checkout branch to tag
 
 ```
