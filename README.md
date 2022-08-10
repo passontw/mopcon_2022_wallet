@@ -26,6 +26,8 @@
 
 * 2.1 - Counter 的 UI
 * 2.2 - 增加 setCount function
+* 2.3 - 拆出 Couter 的 Class Component
+
 ## checkout branch to tag
 
 ```
