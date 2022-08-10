@@ -2,11 +2,23 @@ import { useState, Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 class App extends Component {
+  timer = null;
   constructor(props) {
     super(props);
     this.state = {
       count: 0,
     };
+  }
+
+  componentDidMount() {
+    const self = this;
+    this.timer = setInterval(() => {
+      self.setState(state => ({...state, count: state.count + 1}));
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   handleSetCount = () => {
