@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { useState, Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function App() {
-  const [count, setCount] = useState(0);
-  return (
-    <View style={[styles.bg]}>
-      <View style={{ height: 100 }}>
-        <Text style={count < 5 ? styles.less : styles.greater}>You clicked {count} times</Text>
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  handleSetCount = () => {
+    const { count } = this.state;
+    this.setState(state => ({...state, count: count + 1 }));
+  }
+
+  render() {
+    const { count } = this.state;
+    return (
+      <View style={[styles.bg]}>
+        <View style={{ height: 100 }}>
+          <Text style={count < 5 ? styles.less : styles.greater}>You clicked {count} times</Text>
+        </View>
+        <View style={{ height: 100 }}>
+          <TouchableOpacity style={styles.button} onPress={this.handleSetCount}>
+            <Text style={styles.buttonText}>Click</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={{ height: 100 }}>
-        <TouchableOpacity style={styles.button} onPress={() => setCount(count+1)}>
-          <Text style={styles.buttonText}>Click</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -34,3 +48,5 @@ const styles = StyleSheet.create({
     color: '#fff'
   }
 });
+
+export default App;
