@@ -6,8 +6,7 @@ export default function App() {
 
   useEffect(() => {
     const timmer = setInterval(() => {
-      setCount(count + 1);
-      console.log("🚀 ~ file: App.js ~ line 10 ~ timmer ~ count", count)
+      setCount(prevCount => prevCount + 1);
     }, 1000);
     return () => clearInterval(timmer);
   }, []);
