@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const timmer = setInterval(() => {
+      setCount(count + 1);
+      console.log("🚀 ~ file: App.js ~ line 10 ~ timmer ~ count", count)
+    }, 1000);
+    return () => clearInterval(timmer);
+  }, []);
   return (
     <View style={[styles.bg]}>
       <View style={{ height: 100 }}>
