@@ -41,8 +41,8 @@ const QRCodeScreen = () => {
       <View style={styles.qrcodeContainerStyle}>
         <QRCode
           size={200}
-          color="#fff"
-          backgroundColor="#0A0F24"
+          color="#0A0F24"
+          backgroundColor="#fff"
           value={state.address}
         />
       </View>
