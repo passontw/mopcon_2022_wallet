@@ -97,7 +97,8 @@ const HomeScreen = (props) => {
                 mode="outlined"
                 onPress={() => {
                   navigation.navigate("SendETH");
-                }}>
+                }}
+              >
                 Send
               </Button>
             </View>
@@ -107,7 +108,8 @@ const HomeScreen = (props) => {
                 mode="contained"
                 onPress={() => {
                   navigation.navigate("Qrcode");
-                }}>
+                }}
+              >
                 Receive
               </Button>
             </View>
@@ -115,7 +117,8 @@ const HomeScreen = (props) => {
               <Button
                 icon="camera"
                 mode="contained"
-                onPress={() => setScanned(true)}>
+                onPress={() => setScanned(true)}
+              >
                 QrCode Scanner
               </Button>
             </View>
@@ -155,7 +158,8 @@ const HomeScreen = (props) => {
           onPress={async () => {
             await AsyncStorage.removeItem("account");
             navigation.replace("Welcome");
-          }}>
+          }}
+        >
           Logout
         </Button>
       </View>

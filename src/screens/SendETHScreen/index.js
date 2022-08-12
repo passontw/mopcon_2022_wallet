@@ -168,19 +168,22 @@ const SendETHScreen = (props) => {
         <View style={styles.counterContainerStyle}>
           <TouchableOpacity
             onPress={() => setAmount("1")}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Text style={styles.numberTextStyle}>1</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setAmount("2")}
-            style={styles.numberButton2Style}>
+            style={styles.numberButton2Style}
+          >
             <Text style={styles.numberTextStyle}>2</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               setAmount("3");
             }}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Text style={styles.numberTextStyle}>3</Text>
           </TouchableOpacity>
         </View>
@@ -190,21 +193,24 @@ const SendETHScreen = (props) => {
             onPress={() => {
               setAmount("4");
             }}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Text style={styles.numberTextStyle}>4</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               setAmount("5");
             }}
-            style={styles.numberButton2Style}>
+            style={styles.numberButton2Style}
+          >
             <Text style={styles.numberTextStyle}>5</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               setAmount("6");
             }}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Text style={styles.numberTextStyle}>6</Text>
           </TouchableOpacity>
         </View>
@@ -214,17 +220,20 @@ const SendETHScreen = (props) => {
             onPress={() => {
               setAmount("7");
             }}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Text style={styles.numberTextStyle}>7</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setAmount("8")}
-            style={styles.numberButton2Style}>
+            style={styles.numberButton2Style}
+          >
             <Text style={styles.numberTextStyle}>8</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setAmount("9")}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Text style={styles.numberTextStyle}>9</Text>
           </TouchableOpacity>
         </View>
@@ -237,19 +246,22 @@ const SendETHScreen = (props) => {
             onPress={() => {
               setAmount("0");
             }}
-            style={styles.numberButton2Style}>
+            style={styles.numberButton2Style}
+          >
             <Text style={styles.numberTextStyle}>0</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={deleteLastChar}
-            style={styles.numberButtonStyle}>
+            style={styles.numberButtonStyle}
+          >
             <Icon style={styles.iconStyle} name="delete" color="#fff" />
           </TouchableOpacity>
         </View>
       </View>
       <TouchableOpacity
         onPress={handleSendETH}
-        style={styles.sendEthContainerStyle}>
+        style={styles.sendEthContainerStyle}
+      >
         <Text style={styles.sendEthTextStyle}>Send ETH</Text>
       </TouchableOpacity>
     </View>
