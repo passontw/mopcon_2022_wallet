@@ -124,7 +124,6 @@ const SendETHScreen = (props) => {
     const { route } = props;
     if (route && route.params && route.params.reciverAddress) {
       const { params } = route;
-
       Alert.alert("Receiver Address", `轉帳到: ${params.reciverAddress}`, [
         {
           text: "Cancel",

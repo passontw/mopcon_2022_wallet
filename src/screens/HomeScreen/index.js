@@ -62,7 +62,6 @@ const HomeScreen = (props) => {
   const handleBarCodeScanned = ({ data }) => {
     const isMetaMaskWallet = data.indexOf(META_MASK_WALLET_PREFIX) > -1;
 
-    // 刪掉 0x
     const nextAddress = isMetaMaskWallet
       ? data.substring(META_MASK_WALLET_PREFIX.length)
       : data;
