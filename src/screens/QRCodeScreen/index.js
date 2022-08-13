@@ -1,6 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, ActivityIndicator, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+  SafeAreaView,
+} from "react-native";
 import QRCode from "react-native-qrcode-svg";
 
 const QRCodeScreen = () => {
@@ -10,7 +16,7 @@ const QRCodeScreen = () => {
   });
 
   const checkWallet = async () => {
-    const accountStr = await AsyncStorage.getItem('account');
+    const accountStr = await AsyncStorage.getItem("account");
     if (accountStr) {
       const account = JSON.parse(accountStr);
       setState({
@@ -24,10 +30,9 @@ const QRCodeScreen = () => {
     checkWallet();
   }, []);
 
-
   if (state.isLoading) {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#fff" />
       </View>
     );
@@ -41,8 +46,8 @@ const QRCodeScreen = () => {
       <View style={styles.qrcodeContainerStyle}>
         <QRCode
           size={200}
-          color="#fff"
-          backgroundColor="#0A0F24"
+          color="#0A0F24"
+          backgroundColor="#fff"
           value={state.address}
         />
       </View>

@@ -6,13 +6,18 @@ import EthereumTx from "ethereumjs-tx";
 import Web3 from "web3";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
 const web3 = new Web3();
 web3.setProvider(
   new web3.providers.HttpProvider(
     "https://ropsten.infura.io/v3/dea49333d33447559dbd2a21ef3f6cc2"
   )
 );
+
+const removeAddressPrefix = (address) => {
+  if (address.indexOf("0x") === -1) return address;
+
+  return address.substring(2);
+};
 
 const SendETHScreen = (props) => {
   const [state, setState] = useState({
@@ -39,11 +44,13 @@ const SendETHScreen = (props) => {
   };
 
   const transferEther = async (reciverAddress) => {
+    const reciverAddressNoPrefix = removeAddressPrefix(reciverAddress);
+
     try {
       if (
-        reciverAddress === undefined ||
         reciverAddress.length !== 42 ||
-        web3.utils.isAddress(reciverAddress) === false
+        reciverAddress === undefined ||
+        web3.utils.isAddress(reciverAddressNoPrefix) === false
       ) {
         Alert.alert(
           "Wrong Ethereum Address!",
@@ -54,14 +61,17 @@ const SendETHScreen = (props) => {
       }
       const { account } = state;
       alert(JSON.stringify(account));
-      const privateKey = Buffer.from(account.privateKey, "hex");
+      const privateKey = Buffer.from(
+        removeAddressPrefix(account.privateKey),
+        "hex"
+      );
       const count = await web3.eth.getTransactionCount(account.address);
       const gasPriceGwei = 3;
       const gasLimit = 3000000;
 
       const newAmount = 1000000000000000000 * Number(state.amount);
       const rawTransaction = {
-        from: state.address,
+        from: account.address,
         to: reciverAddress,
         value: web3.utils.toHex(newAmount),
         gasPrice: web3.utils.toHex(gasPriceGwei * 1e9),
