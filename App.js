@@ -1,26 +1,42 @@
 import { useState, useEffect } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function App() {
-  const [count, setCount] = useState(0);
+const useCountdown = (defaultCount = 0, ms = 1000) => {
+  const [count, setCount] = useState(defaultCount);
 
   useEffect(() => {
     const timmer = setInterval(() => {
       setCount(prevCount => prevCount + 1);
-    }, 1000);
+    }, ms);
     return () => clearInterval(timmer);
   }, []);
+  return [count, setCount];
+};
+
+const OtherCountdownText = () => {
+  const [count, setCount] = useCountdown(0, 500);
+
   return (
     <View style={[styles.bg]}>
       <View style={{ height: 100 }}>
-        <Text style={count < 5 ? styles.less : styles.greater}>You clicked {count} times</Text>
-      </View>
-      <View style={{ height: 100 }}>
-        <TouchableOpacity style={styles.button} onPress={() => setCount(count+1)}>
-          <Text style={styles.buttonText}>Click</Text>
-        </TouchableOpacity>
+        <Text style={count < 5 ? styles.less : styles.greater}>You countdown {count} times</Text>
       </View>
     </View>
+  );
+};
+
+export default function App() {
+  const [count, setCount] = useCountdown(0, 1000);
+
+  return (
+    <>
+    <View style={[styles.bg]}>
+      <View style={{ height: 100 }}>
+        <Text style={count < 5 ? styles.less : styles.greater}>You countdown {count} times</Text>
+      </View>
+    </View>
+    <OtherCountdownText />
+    </>
   );
 }
 
