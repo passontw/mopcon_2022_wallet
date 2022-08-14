@@ -31,10 +31,12 @@
 * 2.3 - 拆出 Couter 的 Class Component
 * 2.3.1 - function component 倒數計時(錯誤範例)
 * 2.3.2 - 修正setCount 在 setInterval 錯誤的問題
+* 2.3.3 - 將倒數計時邏輯 拆成 hook 的範例
 
 ### Navigation
 
 * 3.1 - 增加 react-navigation 和 HomeScreen DetailsScreen
+* 3.1.1 - 調整為 tab navigation 範例
 * 3.2 - 將 HomeScreen 與 DetailsScreen 整理到 `src/screens`
 ## checkout branch to tag
 
