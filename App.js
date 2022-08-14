@@ -20,11 +20,15 @@ function FeedScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Feed Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.push('Details')}
+      />
     </View>
   );
 }
 
-function ProfileScreen({ navigation }) {
+function ProfileScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Profile Screen</Text>
@@ -32,7 +36,7 @@ function ProfileScreen({ navigation }) {
   );
 }
 
-function SettingsScreen({ navigation }) {
+function SettingsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Settings Screen</Text>
@@ -40,7 +44,7 @@ function SettingsScreen({ navigation }) {
   );
 }
 
-function NotificationsScreen({ navigation }) {
+function NotificationsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Notifications Screen</Text>
@@ -48,10 +52,10 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
-function DetailsScreen({ navigation }) {
+function DetailsScreen({ navigation, route }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+      <Text>Details Screen Id: {route.key}</Text>
       <Button
         title="Go to Details... again"
         onPress={() => navigation.push('Details')}
@@ -74,6 +78,15 @@ function HomeStack() {
   );
 }
 
+function FeedStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Stack" component={FeedScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
+    </Stack.Navigator>
+  );
+}
+
 function App() {
   return (
     <NavigationContainer>
@@ -85,15 +98,16 @@ function App() {
         },
       }} name="HomeStack" component={HomeStack} />
       <Tab.Screen options={{
+        headerShown: false,
         tabBarIcon: () => {
           return <Ionicons name='heart' size={22} />;
         },
-      }} name="Feed" component={FeedScreen} />
+      }} name="FeedStack" component={FeedStack} />
       <Tab.Screen options={{
         tabBarIcon: () => {
           return <Ionicons name='search' size={22} />;
         },
-      }} name="Notifications" component={NotificationsScreen} />
+      }} name="NotificationsStack" component={NotificationsScreen} />
     </Tab.Navigator>
     </NavigationContainer>
   );
