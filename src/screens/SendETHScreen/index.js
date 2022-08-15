@@ -14,6 +14,12 @@ web3.setProvider(
   )
 );
 
+const removeAddressPrefix = (address) => {
+  if (address.indexOf("0x") === -1) return address;
+
+  return address.substring(2);
+};
+
 const SendETHScreen = (props) => {
   const [state, setState] = useState({
     isLoading: true,
@@ -40,10 +46,12 @@ const SendETHScreen = (props) => {
 
   const transferEther = async (reciverAddress) => {
     try {
+      const reciverAddressNoPrefix = removeAddressPrefix(reciverAddress);
+
       if (
         reciverAddress === undefined ||
         reciverAddress.length !== 42 ||
-        web3.utils.isAddress(reciverAddress) === false
+        web3.utils.isAddress(reciverAddressNoPrefix) === false
       ) {
         Alert.alert(
           "Wrong Ethereum Address!",
@@ -54,14 +62,17 @@ const SendETHScreen = (props) => {
       }
       const { account } = state;
       alert(JSON.stringify(account));
-      const privateKey = Buffer.from(account.privateKey, "hex");
+      const privateKey = Buffer.from(
+        removeAddressPrefix(account.privateKey),
+        "hex"
+      );
       const count = await web3.eth.getTransactionCount(account.address);
       const gasPriceGwei = 3;
       const gasLimit = 3000000;
 
       const newAmount = 1000000000000000000 * Number(state.amount);
       const rawTransaction = {
-        from: state.address,
+        from: account.address,
         to: reciverAddress,
         value: web3.utils.toHex(newAmount),
         gasPrice: web3.utils.toHex(gasPriceGwei * 1e9),
@@ -294,7 +305,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "bold",
     position: "absolute",
-    top: "20%",
+    top: "15%",
   },
   counterContainerStyle: {
     flexDirection: "row",
