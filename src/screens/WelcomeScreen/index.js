@@ -46,7 +46,6 @@ const restoreWallet = async (privateKey) => {
 
 const handleBarCodeScanned = (navigation) => ({ data }) => {
   restoreWallet(data);
-  console.log("🚀 ~ file: index.js ~ line 49 ~ handleBarCodeScanned ~ data", data)
   navigation.replace("Home");
 };
 
