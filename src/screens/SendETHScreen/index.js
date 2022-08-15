@@ -47,9 +47,11 @@ const SendETHScreen = (props) => {
     const reciverAddressNoPrefix = removeAddressPrefix(reciverAddress);
 
     try {
+      const reciverAddressNoPrefix = removeAddressPrefix(reciverAddress);
+
       if (
-        reciverAddress.length !== 42 ||
         reciverAddress === undefined ||
+        reciverAddress.length !== 42 ||
         web3.utils.isAddress(reciverAddressNoPrefix) === false
       ) {
         Alert.alert(
@@ -304,7 +306,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "bold",
     position: "absolute",
-    top: "20%",
+    top: "15%",
   },
   counterContainerStyle: {
     flexDirection: "row",
